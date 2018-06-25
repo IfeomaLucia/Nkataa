@@ -16,6 +16,14 @@ exports.getUsers = function(req, res){
     model.find(function(err, users){
         if(err) res.json({err: err, message:'something went wrong'});
         res.json(users);
-    })
+    });
+}
+
+exports.deleteUser = function(req, res){
+    var options = {_id: req.params.id};
+    model.remove(options, function(err){
+        if(err) res.json({err: err, message: 'the resource could not be deleted'});
+        res.json({message: 'the resource was deleted'});
+    });
 }
 
