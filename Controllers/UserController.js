@@ -12,3 +12,10 @@ exports.addUser = function(req, res){
     });
 }
 
+exports.getUsers = function(req, res){
+    model.find(function(err, users){
+        if(err) res.json({err: err, message:'something went wrong'});
+        res.json(users);
+    })
+}
+
