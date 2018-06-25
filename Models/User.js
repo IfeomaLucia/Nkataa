@@ -1,7 +1,10 @@
 var mongoose = require('mongoose');
-
+var Post = require('../Models/Post');
 var UserSchema = mongoose.Schema({
     name: String,
-    email: {Type: String, unique: true},
-    password: String
+    email: {type: String, unique: true},
+    password: String,
+    posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}]//refrences the posts for the user
 })
+
+module.exports = mongoose.model('User', UserSchema);
