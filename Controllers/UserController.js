@@ -27,3 +27,32 @@ exports.deleteUser = function(req, res){
     });
 }
 
+exports.getUserByParam = function(req, res){
+    var key = req.params.key;
+    var value = req.params.value;
+    switch(key){
+        case 'id':
+        model.findById(value, 'name email', function(err, data){
+            if(err) res.json({err: err, message: 'Id not found'});
+            res.json({message: data});
+        });
+        break;
+        case 'email':
+        model.findOne({email: value}, 'name email', function(err, data){
+            if(err) res.json({err:err, message: 'Email not found'});
+            res.json({message: data});
+        });
+        break;
+        case 'name':
+        model.find({name: value}, 'name email', function(err, data){
+            if(err) res.json({err: err, mesage: 'Name not found'});
+            res.json({message: data});
+        });
+        break;
+       default:
+       res.json({message: 'Could not find the resource'});
+       break;
+    }
+
+}
+
