@@ -9,4 +9,6 @@ router.get('/', userController.getUsers);
 
 router.get('/delete/:id', userController.deleteUser);
 
+router.get('/search/:key/:value', userController.getUserByParam);
+
 module.exports = router;
