@@ -45,7 +45,7 @@ exports.getUserByParam = function(req, res){
         break;
         case 'name':
         model.find({name: value}, '-password', function(err, data){
-            if(err) res.json({err: err, mesage: 'Name not found'});
+            if(err) res.json({err: err, message: 'Name not found'});
             res.json({message: data});
         });
         break;
