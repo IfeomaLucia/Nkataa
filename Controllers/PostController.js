@@ -19,13 +19,13 @@ exports.getPosts = function(req, res){
     });
 }
 
-// exports.deletePost = function(req, res){
-//     var options = {_id: req.params.id};
-//     model.remove(options, function(err){
-//         if(err) res.json({err: err, message: 'the resource could not be deleted'});
-//         res.json({message: 'the post was deleted'});
-//     });
-// }
+exports.deletePost = function(req, res){
+    var options = {_id: req.params.id};
+    model.remove(options, function(err){
+        if(err) res.json({err: err, message: 'the resource could not be deleted'});
+        res.json({message: 'the post was deleted'});
+    });
+}
 
 // exports.updatePost = function(req, res){
 //     var id = req.params.id;
