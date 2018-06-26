@@ -12,12 +12,12 @@ exports.addPost = function(req, res){
     });
 }
 
-// exports.getPosts = function(req, res){
-//     model.find(function(err, posts){
-//         if(err) res.json({err: err, message:'something went wrong'});
-//         res.json(posts);
-//     });
-// }
+exports.getPosts = function(req, res){
+    model.find(function(err, posts){
+        if(err) res.json({err: err, message:'something went wrong'});
+        res.json(posts);
+    });
+}
 
 // exports.deletePost = function(req, res){
 //     var options = {_id: req.params.id};
