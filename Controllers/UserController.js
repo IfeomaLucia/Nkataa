@@ -58,7 +58,7 @@ exports.getUserByParam = function(req, res){
 
 exports.updateUser = function(req, res){
     var id = req.params.id;
-    update = {
+    var update = {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password
