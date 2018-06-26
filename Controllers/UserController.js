@@ -32,19 +32,19 @@ exports.getUserByParam = function(req, res){
     var value = req.params.value;
     switch(key){
         case 'id':
-        model.findById(value, 'name email', function(err, data){
+        model.findById(value, '-password', function(err, data){
             if(err) res.json({err: err, message: 'Id not found'});
             res.json({message: data});
         });
         break;
         case 'email':
-        model.findOne({email: value}, 'name email', function(err, data){
+        model.findOne({email: value}, '-password', function(err, data){
             if(err) res.json({err:err, message: 'Email not found'});
             res.json({message: data});
         });
         break;
         case 'name':
-        model.find({name: value}, 'name email', function(err, data){
+        model.find({name: value}, '-password', function(err, data){
             if(err) res.json({err: err, mesage: 'Name not found'});
             res.json({message: data});
         });
