@@ -21,13 +21,18 @@ exports.getComments = function(req, res){
     });
 }
 
-// exports.getCommentsByPostId = function(req, res){
-//     var id = req.params.id;
-//     model.findById(id, function(err, data){
-//         if(err) res.json({err: err, message:'something went wrong'});
-//         res.json(data);
-//     });
-// }
+exports.getCommentsByPostId = function(req, res){
+    var key = req.params.key;
+    var value = req.params.value;
+    switch(key){
+        case 'id':
+        model.findById(value, function(err, data){
+            if(err) res.json({err: err, message: 'Id not found'});
+            res.json({message: data});
+        });
+        break;
+    }
+}
 
 exports.deleteComment = function(req, res){
     var options = {_id: req.params.id};
