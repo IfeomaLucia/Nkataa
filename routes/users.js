@@ -7,10 +7,10 @@ router.post('/create', userController.addUser);
 
 router.get('/', userController.getUsers);
 
-router.get('/delete/:id', userController.deleteUser);
+router.get('/delete/', userController.deleteUser);
 
-router.get('/search/:key/:value', userController.getUserByParam);
+router.get('/search/', userController.getUsersByParam);
 
-router.post('/update/:id', userController.updateUser);
+router.post('/update/', userController.updateUser);
 
 module.exports = router;
