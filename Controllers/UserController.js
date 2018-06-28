@@ -19,16 +19,12 @@ exports.addUser = function(req, res){
 }
 
 exports.deleteUser = function(req, res){
-    options = req.query
+    options = req.query;
     return service.deleteUser(req, res);
 }
 
 exports.updateUser = function(req, res){
     id = req.query;
-    data = {
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-    };
+    data = req.body;
     return service.updateUser(req, res);
 }
