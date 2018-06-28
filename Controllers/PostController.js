@@ -13,7 +13,18 @@ exports.addPost = function(req, res){
     return service.addPost(req, res);
 }
 
+exports.getPostsByParam = function(req, res){
+    options = req.query;
+    return service.getPostsByParam(req, res, options);
+}
+
 exports.deletePost = function(req, res){
     options = req.query
     return service.deletePost(req, res);
+}
+
+exports.updatePost = function(req, res){
+    id = req.query;
+    data = req.body;
+    return service.updatePost(req, res);
 }

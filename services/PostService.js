@@ -27,3 +27,10 @@ exports.deletePost = function(req, res){
         res.json('The resource was deleted successfully');
     });
 }
+
+exports.updatePost = function(req, res){
+    repository.update(id, data, function(err){
+        if(err) res.json(err);
+        res.json(data);
+    });
+}
