@@ -1,16 +1,28 @@
 var repository = require('../repositories/CommentRepository');
+var postRepo = require('../repositories/PostRepository');
 
 exports.getAllComments = function(req, res){
-    repository.get({}, function(err, comments){
+    repository.get({}, '',{path: 'user', select: 'name'}, {path: 'post', select: '-comments'}, function(err, comments){
         if(err) res.json({err: err, message: 'Sorry, something went wrong'});
         res.json(comments);
     });  
 }
 
-exports.addComment = function(req, res){
-    repository.add(data, function(err){
+exports.getCommentsInPost = function(req, res){
+    repository.get(options, '', {path: 'user', select: 'name'}, 'post', function(err, posts){
         if(err) res.json(err);
-        res.json('User created successfully');
+        res.json(posts);
+    });
+}
+
+exports.addComment = function(req, res, data){
+    repository.add(data, function(err, comment){
+        postRepo.getById(data.post, function(err, post){
+            post.comments.push(comment._id);
+            post.save();
+            if(err) res.json(err);
+            res.json('Comment created successfully');
+        })
     });
 }
 
