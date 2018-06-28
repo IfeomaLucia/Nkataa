@@ -3,14 +3,10 @@ var router = express.Router();
 var commentController = require('../Controllers/CommentController');
 
 /* GET users listing. */
+router.get('/', commentController.getComment);
 router.post('/create', commentController.addComment);
-
-router.get('/', commentController.getComments);
-
 // router.get('/:id', commentController.getCommentsByPostId);
-
-router.get('/delete/:id', commentController.deleteComment);
-
-router.post('/update/:id', commentController.updateComment);
+router.get('/delete/', commentController.deleteComment);
+router.post('/update/', commentController.updateComment);
 
 module.exports = router;
