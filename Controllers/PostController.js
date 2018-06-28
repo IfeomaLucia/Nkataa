@@ -10,7 +10,7 @@ exports.addPost = function(req, res){
         postBody: req.body.postBody,
         user: req.body.user
     };
-    return service.addPost(req, res);
+    return service.addPost(req, res, data);
 }
 
 exports.getPostsByParam = function(req, res){

@@ -1,14 +1,14 @@
 var repository = require('../repositories/UserRepository');
 
 exports.getAllUsers = function(req, res){
-    repository.get({}, function(err, users){
+    repository.get({}, '-password', 'posts', '', function(err, users){
         if(err) res.json({err: err, message: 'Sorry, something went wrong'});
         res.json(users);
     });  
 }
 
 exports.getUsersByParam = function(req, res, options){
-    repository.get(options, function(err, users){
+    repository.get(options, '-password', 'posts', '', function(err, users){
         if(err) res.json(err);
         res.json(users);
     });

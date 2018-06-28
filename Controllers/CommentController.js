@@ -17,7 +17,7 @@ exports.addComment = function(req, res){
         user: req.body.user,
         post: req.body.post
     };
-    return service.addComment(req, res);
+    return service.addComment(req, res, data);
 }
 
 exports.deleteComment = function(req, res){
